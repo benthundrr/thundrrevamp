@@ -208,15 +208,15 @@
             transform: translateY(-1px) scale(1.005);
         }
 
-        /* REGION SELECTOR STYLES - Darker theme with transparent blur */
+        /* REGION SELECTOR STYLES - Matching existing theme */
         .region-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -236,17 +236,18 @@
             position: relative;
             width: 100%;
             max-width: 800px;
-            background: rgba(20, 20, 20, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 89, 255, 0.3);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(15, 74, 199, 0.6);
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 
-                0 0 30px rgba(0, 89, 255, 0.6),
-                0 0 60px rgba(0, 89, 255, 0.4),
+                0 0 30px rgba(15, 74, 199, 0.6),
+                0 0 60px rgba(15, 74, 199, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transform: scale(0.7) translateY(50px);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: regionCardGlow 3s ease-in-out infinite;
             max-height: 80vh;
             overflow: hidden;
             display: flex;
@@ -257,116 +258,42 @@
             transform: scale(1) translateY(0);
         }
 
+        .region-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(15, 74, 199, 0.8), rgba(15, 74, 199, 0.4), rgba(15, 74, 199, 0.8), rgba(15, 74, 199, 0.4));
+            border-radius: 20px;
+            z-index: -1;
+            animation: regionBorderGlow 3s ease-in-out infinite;
+        }
+
         .region-card-header {
             background: rgba(15, 74, 199, 0.3);
-            border: 1px solid rgba(15, 74, 199, 0.6);
-            border-radius: 12px;
+            border: 2px solid rgba(15, 74, 199, 0.6);
             color: white;
-            font-size: 18px;
+            padding: 12px 20px;
+            border-radius: 15px;
             font-weight: 800;
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.6s ease;
-            box-shadow: 
-                0 0 20px rgba(15, 74, 199, 0.4),
-                0 0 40px rgba(15, 74, 199, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-            z-index: 2;
-            text-decoration: none;
-            display: inline-block;
-            white-space: nowrap;
+            font-size: 18px;
             text-align: center;
-            padding: 16px 32px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 0 25px rgba(15, 74, 199, 0.8),
+                0 6px 20px rgba(15, 74, 199, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            animation: headerPulse 2s ease-in-out infinite;
+            text-shadow: 0 0 15px rgba(15, 74, 199, 0.8);
             letter-spacing: 1px;
             margin-bottom: 1.5rem;
             position: relative;
             flex-shrink: 0;
         }
 
-        .region-card-header::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            left: 0;
-            right: 0;
-            bottom: -100px;
-            background: 
-                radial-gradient(circle 2px at 10% 0%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 15%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 30%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 45%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 60%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 75%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 90%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 30% 0%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 20%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 40%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 60%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 80%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 50% 5%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 25%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 45%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 65%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 85%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 70% 10%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 30%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 50%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 70%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 90%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 90% 0%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 90% 25%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 90% 50%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 90% 75%, rgba(15, 74, 199, 1) 0%, transparent 50%);
-            border-radius: 12px;
-            animation: particleFlow 3s linear infinite;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .region-card-header .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0;
-            background-image: 
-                linear-gradient(rgba(15, 74, 199, 0.4) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(15, 74, 199, 0.4) 1px, transparent 1px);
-            background-size: 8px 8px;
-            border-radius: 12px;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .region-card-header .grid-pulse {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0;
-            background: 
-                radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
-                rgba(15, 74, 199, 0.8) 0%, 
-                rgba(15, 74, 199, 0.4) 20%, 
-                rgba(15, 74, 199, 0.2) 40%,
-                transparent 60%);
-            border-radius: 12px;
-            pointer-events: none;
-            z-index: 0;
-            transition: all 0.2s ease;
-        }
-
         .region-card-subtitle {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
             text-align: center;
             margin-bottom: 2rem;
             font-size: 14px;
@@ -388,15 +315,16 @@
             transition: all 0.3s ease;
             padding: 1.5rem;
             border-radius: 15px;
-            background: rgba(30, 30, 30, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 74, 199, 0.15);
+            border: 1px solid rgba(15, 74, 199, 0.4);
             animation: regionFadeIn 0.6s ease-out forwards;
             opacity: 0;
             transform: translateY(20px);
             overflow: hidden;
             box-shadow: 
-                0 5px 15px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                0 0 15px rgba(15, 74, 199, 0.3),
+                0 0 25px rgba(15, 74, 199, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .region-option:nth-child(1) { animation-delay: 0.1s; }
@@ -404,18 +332,38 @@
         .region-option:nth-child(3) { animation-delay: 0.3s; }
         .region-option:nth-child(4) { animation-delay: 0.4s; }
 
+        .region-option::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            bottom: -50px;
+            background: 
+                radial-gradient(circle 2px at 15% 10%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 35% 25%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 55% 40%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 75% 55%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 25% 70%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 65% 85%, rgba(15, 74, 199, 0.8) 0%, transparent 50%);
+            border-radius: 15px;
+            animation: regionParticleFlow 4s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         .region-option:hover {
             transform: translateY(-10px) scale(1.05);
             box-shadow: 
-                0 15px 30px rgba(0, 0, 0, 0.8),
-                0 0 20px rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(40, 40, 40, 0.9);
+                0 15px 30px rgba(15, 74, 199, 0.5),
+                0 0 40px rgba(15, 74, 199, 0.4);
+            border-color: rgba(15, 74, 199, 0.8);
+            background: rgba(15, 74, 199, 0.25);
         }
 
         .region-image {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             margin: 0 auto 15px;
             border-radius: 12px;
             overflow: hidden;
@@ -434,7 +382,7 @@
 
         .region-option:hover .region-image {
             transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 10px 25px rgba(15, 74, 199, 0.4);
         }
 
         .region-option:hover .region-image img {
@@ -452,132 +400,45 @@
             font-weight: 800;
             cursor: pointer;
             overflow: hidden;
-            transition: all 0.6s ease;
+            transition: all 0.3s ease;
             box-shadow: 
                 0 0 20px rgba(15, 74, 199, 0.4),
                 0 0 40px rgba(15, 74, 199, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             z-index: 10;
-            text-decoration: none;
-            display: inline-block;
-            white-space: nowrap;
-            text-align: center;
         }
 
         .select-button::before {
             content: '';
             position: absolute;
-            top: -100px;
-            left: 0;
-            right: 0;
-            bottom: -100px;
-            background: 
-                radial-gradient(circle 2px at 10% 0%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 15%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 30%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 45%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 60%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 75%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 90%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 30% 0%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 20%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 40%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 60%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 80%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 50% 5%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 25%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 45%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 65%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 85%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 70% 10%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 30%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 50%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 70%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 90%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 90% 0%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 90% 25%, rgba(15, 74, 199, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 90% 50%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 90% 75%, rgba(15, 74, 199, 1) 0%, transparent 50%);
-            border-radius: 12px;
-            animation: particleFlow 3s linear infinite;
-            pointer-events: none;
-            z-index: 1;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
         }
 
-        .select-button .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0;
-            background-image: 
-                linear-gradient(rgba(15, 74, 199, 0.4) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(15, 74, 199, 0.4) 1px, transparent 1px);
-            background-size: 8px 8px;
-            border-radius: 12px;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .select-button .grid-pulse {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0;
-            background: 
-                radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
-                rgba(15, 74, 199, 0.8) 0%, 
-                rgba(15, 74, 199, 0.4) 20%, 
-                rgba(15, 74, 199, 0.2) 40%,
-                transparent 60%);
-            border-radius: 12px;
-            pointer-events: none;
-            z-index: 0;
-            transition: all 0.2s ease;
+        .select-button:hover::before {
+            left: 100%;
         }
 
         .select-button:hover {
-            transform: translateY(-2px) scale(1.01);
+            transform: translateY(-2px);
             background: rgba(15, 74, 199, 0.4);
             border-color: rgba(15, 74, 199, 0.8);
             box-shadow: 
                 0 0 30px rgba(15, 74, 199, 0.6),
-                0 0 60px rgba(15, 74, 199, 0.4),
-                0 10px 30px rgba(15, 74, 199, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        .select-button:hover .grid-overlay {
-            opacity: 1;
-            animation: gridScan 2.5s ease-in-out infinite;
-        }
-
-        .select-button:hover .grid-pulse {
-            opacity: 1;
-            animation: pulseWave 1.5s ease-out infinite;
-        }
-
-        .select-button:active {
-            transform: translateY(-1px) scale(1.005);
+                0 0 60px rgba(15, 74, 199, 0.4);
         }
 
         .close-button {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(50, 50, 50, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(15, 74, 199, 0.3);
+            border: 1px solid rgba(15, 74, 199, 0.6);
             color: white;
             border-radius: 50%;
             width: 40px;
@@ -589,17 +450,17 @@
             transition: all 0.3s ease;
             font-size: 18px;
             box-shadow: 
-                0 5px 15px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 0 15px rgba(15, 74, 199, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
             z-index: 15;
         }
 
         .close-button:hover {
-            background: rgba(70, 70, 70, 0.9);
+            background: rgba(15, 74, 199, 0.5);
             transform: rotate(90deg);
             box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.6),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                0 0 25px rgba(15, 74, 199, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         /* Desktop Popup Styles */
@@ -1007,10 +868,43 @@
             }
         }
 
+        @keyframes regionCardGlow {
+            0%, 100% {
+                box-shadow: 
+                    0 0 30px rgba(15, 74, 199, 0.6),
+                    0 0 60px rgba(15, 74, 199, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+            50% {
+                box-shadow: 
+                    0 0 40px rgba(15, 74, 199, 0.8),
+                    0 0 80px rgba(15, 74, 199, 0.6),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        @keyframes regionBorderGlow {
+            0%, 100% {
+                background: linear-gradient(45deg, rgba(15, 74, 199, 0.8), rgba(15, 74, 199, 0.4), rgba(15, 74, 199, 0.8), rgba(15, 74, 199, 0.4));
+            }
+            50% {
+                background: linear-gradient(45deg, rgba(15, 74, 199, 1), rgba(15, 74, 199, 0.6), rgba(15, 74, 199, 1), rgba(15, 74, 199, 0.6));
+            }
+        }
+
         @keyframes regionFadeIn {
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes regionParticleFlow {
+            0% {
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(50px);
             }
         }
 
@@ -1315,8 +1209,8 @@
             }
 
             .region-image {
-                width: 55px;
-                height: 55px;
+                width: 60px;
+                height: 60px;
                 margin: 0;
                 flex-shrink: 0;
             }
@@ -1437,8 +1331,8 @@
             }
 
             .region-image {
-                width: 45px;
-                height: 45px;
+                width: 50px;
+                height: 50px;
             }
 
             .select-button {
@@ -1653,11 +1547,7 @@
         <div class="region-card">
             <button class="close-button" onclick="closeRegionSelector()">×</button>
             
-            <div class="region-card-header">
-                <div class="grid-overlay"></div>
-                <div class="grid-pulse"></div>
-                <span class="button-text">SELECT YOUR REGION</span>
-            </div>
+            <div class="region-card-header">SELECT YOUR REGION</div>
             <div class="region-card-subtitle">Choose your region to join TikTok LIVE</div>
 
             <div class="regions-grid">
@@ -1666,11 +1556,7 @@
                         <img src="https://cdn.prod.website-files.com/683f98497507d77677d89804/6840ea00d37e4051bf753949_674f4d22022625c5d5982acf_usa-p-500.png" alt="USA">
                     </div>
                     <div class="region-content">
-                        <button class="select-button">
-                            <div class="grid-overlay"></div>
-                            <div class="grid-pulse"></div>
-                            <span class="button-text">Select USA</span>
-                        </button>
+                        <button class="select-button">Select USA</button>
                     </div>
                 </div>
 
@@ -1679,11 +1565,7 @@
                         <img src="https://cdn.prod.website-files.com/683f98497507d77677d89804/6840ea01d472642434fc6653_674f5076c87c72b4c6a67e30_sout-p-500.png" alt="LATAM">
                     </div>
                     <div class="region-content">
-                        <button class="select-button">
-                            <div class="grid-overlay"></div>
-                            <div class="grid-pulse"></div>
-                            <span class="button-text">Select LATAM</span>
-                        </button>
+                        <button class="select-button">Select LATAM</button>
                     </div>
                 </div>
 
@@ -1692,11 +1574,7 @@
                         <img src="https://cdn.prod.website-files.com/683f98497507d77677d89804/6840ea00cf2c95fff898e3dc_6750bd127edbf7042200638f_4343223-p-500.png" alt="AU/NZ">
                     </div>
                     <div class="region-content">
-                        <button class="select-button">
-                            <div class="grid-overlay"></div>
-                            <div class="grid-pulse"></div>
-                            <span class="button-text">Select AU/NZ</span>
-                        </button>
+                        <button class="select-button">Select AU/NZ</button>
                     </div>
                 </div>
 
@@ -1705,11 +1583,7 @@
                         <img src="https://cdn.prod.website-files.com/683f98497507d77677d89804/6840ea002bfb5353669d7c43_674f50cda42468c658b955f7_uk-p-500.png" alt="UK">
                     </div>
                     <div class="region-content">
-                        <button class="select-button">
-                            <div class="grid-overlay"></div>
-                            <div class="grid-pulse"></div>
-                            <span class="button-text">Select UK</span>
-                        </button>
+                        <button class="select-button">Select UK</button>
                     </div>
                 </div>
             </div>
@@ -1757,8 +1631,8 @@
     </div>
 
     <script>
-        // Add interactive pulse tracking for all buttons including select buttons
-        document.querySelectorAll('.glow-button, .select-button').forEach(button => {
+        // Add interactive pulse tracking for all buttons
+        document.querySelectorAll('.glow-button').forEach(button => {
             button.addEventListener('mousemove', function(e) {
                 const rect = this.getBoundingClientRect();
                 const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -1803,32 +1677,6 @@
                     ripple.style.right = '0';
                     ripple.style.bottom = '0';
                     ripple.style.background = 'rgba(15, 74, 199, 0.3)';
-                    ripple.style.borderRadius = '12px';
-                    ripple.style.transform = 'scale(0)';
-                    ripple.style.animation = 'analysisRipple 0.8s ease-out';
-                    ripple.style.pointerEvents = 'none';
-                    
-                    this.appendChild(ripple);
-                    
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 800);
-                }
-            });
-        });
-
-        // Add interactive pulse tracking for region header
-        document.querySelector('.region-card-header').addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            
-            const pulse = this.querySelector('.grid-pulse');
-            if (pulse) {
-                pulse.style.setProperty('--x', x + '%');
-                pulse.style.setProperty('--y', y + '%');
-            }
-        });)';
                     ripple.style.borderRadius = '12px';
                     ripple.style.transform = 'scale(0)';
                     ripple.style.animation = 'analysisRipple 0.8s ease-out';
