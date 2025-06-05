@@ -238,12 +238,12 @@
             max-width: 800px;
             background: rgba(20, 20, 20, 0.95);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 89, 255, 0.3);
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.8),
-                0 0 20px rgba(255, 255, 255, 0.05),
+                0 0 30px rgba(0, 89, 255, 0.6),
+                0 0 60px rgba(0, 89, 255, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transform: scale(0.7) translateY(50px);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -258,22 +258,111 @@
         }
 
         .region-card-header {
-            background: rgba(30, 30, 30, 0.8);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(15, 74, 199, 0.3);
+            border: 1px solid rgba(15, 74, 199, 0.6);
+            border-radius: 12px;
             color: white;
-            padding: 12px 20px;
-            border-radius: 15px;
-            font-weight: 800;
             font-size: 18px;
-            text-align: center;
+            font-weight: 800;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.6s ease;
             box-shadow: 
-                0 0 20px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+                0 0 20px rgba(15, 74, 199, 0.4),
+                0 0 40px rgba(15, 74, 199, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
+            text-align: center;
+            padding: 16px 32px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             letter-spacing: 1px;
             margin-bottom: 1.5rem;
             position: relative;
             flex-shrink: 0;
+        }
+
+        .region-card-header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            bottom: -100px;
+            background: 
+                radial-gradient(circle 2px at 10% 0%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 15%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 30%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 45%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 60%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 75%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 90%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 30% 0%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 20%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 40%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 60%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 80%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 50% 5%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 25%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 45%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 65%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 85%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 70% 10%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 30%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 50%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 70%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 90%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 90% 0%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 90% 25%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 90% 50%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 90% 75%, rgba(15, 74, 199, 1) 0%, transparent 50%);
+            border-radius: 12px;
+            animation: particleFlow 3s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .region-card-header .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            background-image: 
+                linear-gradient(rgba(15, 74, 199, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 74, 199, 0.4) 1px, transparent 1px);
+            background-size: 8px 8px;
+            border-radius: 12px;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .region-card-header .grid-pulse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            background: 
+                radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+                rgba(15, 74, 199, 0.8) 0%, 
+                rgba(15, 74, 199, 0.4) 20%, 
+                rgba(15, 74, 199, 0.2) 40%,
+                transparent 60%);
+            border-radius: 12px;
+            pointer-events: none;
+            z-index: 0;
+            transition: all 0.2s ease;
         }
 
         .region-card-subtitle {
@@ -325,8 +414,8 @@
         }
 
         .region-image {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             margin: 0 auto 15px;
             border-radius: 12px;
             overflow: hidden;
@@ -355,44 +444,132 @@
         .select-button {
             position: relative;
             padding: 12px 24px;
-            background: rgba(50, 50, 50, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(15, 74, 199, 0.3);
+            border: 1px solid rgba(15, 74, 199, 0.6);
             border-radius: 12px;
             color: white;
             font-size: 14px;
             font-weight: 800;
             cursor: pointer;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.6s ease;
             box-shadow: 
-                0 5px 15px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+                0 0 20px rgba(15, 74, 199, 0.4),
+                0 0 40px rgba(15, 74, 199, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             z-index: 10;
+            text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
+            text-align: center;
         }
 
         .select-button::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
+            top: -100px;
+            left: 0;
+            right: 0;
+            bottom: -100px;
+            background: 
+                radial-gradient(circle 2px at 10% 0%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 15%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 30%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 45%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 60%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 75%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 90%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 30% 0%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 20%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 40%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 60%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 80%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 50% 5%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 25%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 45%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 65%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 85%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 70% 10%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 30%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 50%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 70%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 90%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 90% 0%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 90% 25%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 90% 50%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 90% 75%, rgba(15, 74, 199, 1) 0%, transparent 50%);
+            border-radius: 12px;
+            animation: particleFlow 3s linear infinite;
+            pointer-events: none;
+            z-index: 1;
         }
 
-        .select-button:hover::before {
-            left: 100%;
+        .select-button .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            background-image: 
+                linear-gradient(rgba(15, 74, 199, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 74, 199, 0.4) 1px, transparent 1px);
+            background-size: 8px 8px;
+            border-radius: 12px;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .select-button .grid-pulse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            background: 
+                radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+                rgba(15, 74, 199, 0.8) 0%, 
+                rgba(15, 74, 199, 0.4) 20%, 
+                rgba(15, 74, 199, 0.2) 40%,
+                transparent 60%);
+            border-radius: 12px;
+            pointer-events: none;
+            z-index: 0;
+            transition: all 0.2s ease;
         }
 
         .select-button:hover {
-            transform: translateY(-2px);
-            background: rgba(60, 60, 60, 0.9);
-            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px) scale(1.01);
+            background: rgba(15, 74, 199, 0.4);
+            border-color: rgba(15, 74, 199, 0.8);
             box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.6),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                0 0 30px rgba(15, 74, 199, 0.6),
+                0 0 60px rgba(15, 74, 199, 0.4),
+                0 10px 30px rgba(15, 74, 199, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .select-button:hover .grid-overlay {
+            opacity: 1;
+            animation: gridScan 2.5s ease-in-out infinite;
+        }
+
+        .select-button:hover .grid-pulse {
+            opacity: 1;
+            animation: pulseWave 1.5s ease-out infinite;
+        }
+
+        .select-button:active {
+            transform: translateY(-1px) scale(1.005);
         }
 
         .close-button {
@@ -1138,8 +1315,8 @@
             }
 
             .region-image {
-                width: 60px;
-                height: 60px;
+                width: 55px;
+                height: 55px;
                 margin: 0;
                 flex-shrink: 0;
             }
@@ -1260,8 +1437,8 @@
             }
 
             .region-image {
-                width: 50px;
-                height: 50px;
+                width: 45px;
+                height: 45px;
             }
 
             .select-button {
@@ -1476,7 +1653,11 @@
         <div class="region-card">
             <button class="close-button" onclick="closeRegionSelector()">×</button>
             
-            <div class="region-card-header">SELECT YOUR REGION</div>
+            <div class="region-card-header">
+                <div class="grid-overlay"></div>
+                <div class="grid-pulse"></div>
+                <span class="button-text">SELECT YOUR REGION</span>
+            </div>
             <div class="region-card-subtitle">Choose your region to join TikTok LIVE</div>
 
             <div class="regions-grid">
@@ -1485,7 +1666,11 @@
                         <img src="https://cdn.prod.website-files.com/683f98497507d77677d89804/6840ea00d37e4051bf753949_674f4d22022625c5d5982acf_usa-p-500.png" alt="USA">
                     </div>
                     <div class="region-content">
-                        <button class="select-button">Select USA</button>
+                        <button class="select-button">
+                            <div class="grid-overlay"></div>
+                            <div class="grid-pulse"></div>
+                            <span class="button-text">Select USA</span>
+                        </button>
                     </div>
                 </div>
 
@@ -1494,7 +1679,11 @@
                         <img src="https://cdn.prod.website-files.com/683f98497507d77677d89804/6840ea01d472642434fc6653_674f5076c87c72b4c6a67e30_sout-p-500.png" alt="LATAM">
                     </div>
                     <div class="region-content">
-                        <button class="select-button">Select LATAM</button>
+                        <button class="select-button">
+                            <div class="grid-overlay"></div>
+                            <div class="grid-pulse"></div>
+                            <span class="button-text">Select LATAM</span>
+                        </button>
                     </div>
                 </div>
 
@@ -1503,7 +1692,11 @@
                         <img src="https://cdn.prod.website-files.com/683f98497507d77677d89804/6840ea00cf2c95fff898e3dc_6750bd127edbf7042200638f_4343223-p-500.png" alt="AU/NZ">
                     </div>
                     <div class="region-content">
-                        <button class="select-button">Select AU/NZ</button>
+                        <button class="select-button">
+                            <div class="grid-overlay"></div>
+                            <div class="grid-pulse"></div>
+                            <span class="button-text">Select AU/NZ</span>
+                        </button>
                     </div>
                 </div>
 
@@ -1512,7 +1705,11 @@
                         <img src="https://cdn.prod.website-files.com/683f98497507d77677d89804/6840ea002bfb5353669d7c43_674f50cda42468c658b955f7_uk-p-500.png" alt="UK">
                     </div>
                     <div class="region-content">
-                        <button class="select-button">Select UK</button>
+                        <button class="select-button">
+                            <div class="grid-overlay"></div>
+                            <div class="grid-pulse"></div>
+                            <span class="button-text">Select UK</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1560,8 +1757,8 @@
     </div>
 
     <script>
-        // Add interactive pulse tracking for all buttons
-        document.querySelectorAll('.glow-button').forEach(button => {
+        // Add interactive pulse tracking for all buttons including select buttons
+        document.querySelectorAll('.glow-button, .select-button').forEach(button => {
             button.addEventListener('mousemove', function(e) {
                 const rect = this.getBoundingClientRect();
                 const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -1606,6 +1803,32 @@
                     ripple.style.right = '0';
                     ripple.style.bottom = '0';
                     ripple.style.background = 'rgba(15, 74, 199, 0.3)';
+                    ripple.style.borderRadius = '12px';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'analysisRipple 0.8s ease-out';
+                    ripple.style.pointerEvents = 'none';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 800);
+                }
+            });
+        });
+
+        // Add interactive pulse tracking for region header
+        document.querySelector('.region-card-header').addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            
+            const pulse = this.querySelector('.grid-pulse');
+            if (pulse) {
+                pulse.style.setProperty('--x', x + '%');
+                pulse.style.setProperty('--y', y + '%');
+            }
+        });)';
                     ripple.style.borderRadius = '12px';
                     ripple.style.transform = 'scale(0)';
                     ripple.style.animation = 'analysisRipple 0.8s ease-out';
