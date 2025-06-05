@@ -1,4 +1,658 @@
-radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webflow Fixed Centered Buttons</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            font-family: 'Montserrat', Arial, sans-serif;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        /* CRITICAL: Force block-level behavior and clear floats */
+        .buttons-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto 0 auto;
+            padding: 2rem 0;
+            display: block !important;
+            clear: both !important;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Alternative: Use CSS Grid for better control */
+        .buttons-container {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .button-container {
+            position: relative;
+            display: inline-block;
+            animation: buttonFloat 6s ease-in-out infinite;
+            flex: 0 0 auto;
+            float: none !important;
+            clear: none !important;
+        }
+
+        .button-container:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .button-container:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        .button-container:nth-child(3) {
+            animation-delay: 4s;
+        }
+
+        .glow-button {
+            position: relative;
+            padding: 16px 32px;
+            background: rgba(15, 74, 199, 0.3);
+            border: 1px solid rgba(15, 74, 199, 0.6);
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.6s ease;
+            box-shadow: 
+                0 0 20px rgba(15, 74, 199, 0.4),
+                0 0 40px rgba(15, 74, 199, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
+            min-width: 180px;
+            text-align: center;
+            float: none !important;
+            position: relative !important;
+        }
+
+        .button-text {
+            position: relative;
+            z-index: 10;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .glow-button::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            bottom: -100px;
+            background: 
+                radial-gradient(circle 2px at 10% 0%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 15%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 30%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 45%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 60%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 75%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 10% 90%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 30% 0%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 20%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 40%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 60%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 30% 80%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 50% 5%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 25%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 45%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 65%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 50% 85%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 70% 10%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 30%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 50%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 70%, rgba(15, 74, 199, 0.7) 0%, transparent 50%),
+                radial-gradient(circle 2px at 70% 90%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 90% 0%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 90% 25%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 90% 50%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 90% 75%, rgba(15, 74, 199, 1) 0%, transparent 50%);
+            border-radius: 12px;
+            animation: particleFlow 3s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            background-image: 
+                linear-gradient(rgba(15, 74, 199, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 74, 199, 0.4) 1px, transparent 1px);
+            background-size: 8px 8px;
+            border-radius: 12px;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grid-pulse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            background: 
+                radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+                rgba(15, 74, 199, 0.8) 0%, 
+                rgba(15, 74, 199, 0.4) 20%, 
+                rgba(15, 74, 199, 0.2) 40%,
+                transparent 60%);
+            border-radius: 12px;
+            pointer-events: none;
+            z-index: 0;
+            transition: all 0.2s ease;
+        }
+
+        .glow-button:hover {
+            transform: translateY(-2px) scale(1.01);
+            background: rgba(15, 74, 199, 0.4);
+            border-color: rgba(15, 74, 199, 0.8);
+            box-shadow: 
+                0 0 30px rgba(15, 74, 199, 0.6),
+                0 0 60px rgba(15, 74, 199, 0.4),
+                0 10px 30px rgba(15, 74, 199, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .glow-button:hover .grid-overlay {
+            opacity: 1;
+            animation: gridScan 2.5s ease-in-out infinite;
+        }
+
+        .glow-button:hover .grid-pulse {
+            opacity: 1;
+            animation: pulseWave 1.5s ease-out infinite;
+        }
+
+        .glow-button:active {
+            transform: translateY(-1px) scale(1.005);
+        }
+
+        /* REGION SELECTOR STYLES - Matching existing theme */
+        .region-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            padding: 1rem;
+        }
+
+        .region-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .region-card {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(15, 74, 199, 0.6);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 
+                0 0 30px rgba(15, 74, 199, 0.6),
+                0 0 60px rgba(15, 74, 199, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: scale(0.7) translateY(50px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: regionCardGlow 3s ease-in-out infinite;
+            max-height: 80vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .region-overlay.active .region-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .region-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(15, 74, 199, 0.8), rgba(15, 74, 199, 0.4), rgba(15, 74, 199, 0.8), rgba(15, 74, 199, 0.4));
+            border-radius: 20px;
+            z-index: -1;
+            animation: regionBorderGlow 3s ease-in-out infinite;
+        }
+
+        .region-card-header {
+            background: rgba(15, 74, 199, 0.3);
+            border: 2px solid rgba(15, 74, 199, 0.6);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 18px;
+            text-align: center;
+            box-shadow: 
+                0 0 25px rgba(15, 74, 199, 0.8),
+                0 6px 20px rgba(15, 74, 199, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            animation: headerPulse 2s ease-in-out infinite;
+            text-shadow: 0 0 15px rgba(15, 74, 199, 0.8);
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .region-card-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 14px;
+        }
+
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .region-option {
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: rgba(15, 74, 199, 0.15);
+            border: 1px solid rgba(15, 74, 199, 0.4);
+            animation: regionFadeIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+            overflow: hidden;
+            box-shadow: 
+                0 0 15px rgba(15, 74, 199, 0.3),
+                0 0 25px rgba(15, 74, 199, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .region-option:nth-child(1) { animation-delay: 0.1s; }
+        .region-option:nth-child(2) { animation-delay: 0.2s; }
+        .region-option:nth-child(3) { animation-delay: 0.3s; }
+        .region-option:nth-child(4) { animation-delay: 0.4s; }
+
+        .region-option::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            bottom: -50px;
+            background: 
+                radial-gradient(circle 2px at 15% 10%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 35% 25%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 55% 40%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 75% 55%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 25% 70%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 65% 85%, rgba(15, 74, 199, 0.8) 0%, transparent 50%);
+            border-radius: 15px;
+            animation: regionParticleFlow 4s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .region-option:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 
+                0 15px 30px rgba(15, 74, 199, 0.5),
+                0 0 40px rgba(15, 74, 199, 0.4);
+            border-color: rgba(15, 74, 199, 0.8);
+            background: rgba(15, 74, 199, 0.25);
+        }
+
+        .region-image {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: imageFloat 4s ease-in-out infinite;
+            position: relative;
+            z-index: 10;
+        }
+
+        .region-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .region-option:hover .region-image {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(15, 74, 199, 0.4);
+        }
+
+        .region-option:hover .region-image img {
+            transform: scale(1.1);
+        }
+
+        .select-button {
+            position: relative;
+            padding: 12px 24px;
+            background: rgba(15, 74, 199, 0.3);
+            border: 1px solid rgba(15, 74, 199, 0.6);
+            border-radius: 12px;
+            color: white;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 20px rgba(15, 74, 199, 0.4),
+                0 0 40px rgba(15, 74, 199, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            z-index: 10;
+        }
+
+        .select-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .select-button:hover::before {
+            left: 100%;
+        }
+
+        .select-button:hover {
+            transform: translateY(-2px);
+            background: rgba(15, 74, 199, 0.4);
+            border-color: rgba(15, 74, 199, 0.8);
+            box-shadow: 
+                0 0 30px rgba(15, 74, 199, 0.6),
+                0 0 60px rgba(15, 74, 199, 0.4);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(15, 74, 199, 0.3);
+            border: 1px solid rgba(15, 74, 199, 0.6);
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            box-shadow: 
+                0 0 15px rgba(15, 74, 199, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            z-index: 15;
+        }
+
+        .close-button:hover {
+            background: rgba(15, 74, 199, 0.5);
+            transform: rotate(90deg);
+            box-shadow: 
+                0 0 25px rgba(15, 74, 199, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        /* Desktop Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            padding: 1rem;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-container {
+            position: relative;
+            width: 400px;
+            max-width: 90vw;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(15, 74, 199, 0.6);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 
+                0 0 30px rgba(15, 74, 199, 0.6),
+                0 0 60px rgba(15, 74, 199, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: scale(0.7) translateY(50px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: popupGlow 3s ease-in-out infinite;
+            max-height: 70vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .popup-overlay.active .popup-container {
+            transform: scale(1) translateY(0);
+        }
+
+        .grid-vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(15, 74, 199, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 74, 199, 0.08) 1px, transparent 1px),
+                radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.4) 100%);
+            background-size: 20px 20px, 20px 20px, 100% 100%;
+            border-radius: 20px;
+            animation: gridPulse 6s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .popup-header {
+            background: rgba(15, 74, 199, 0.3);
+            border: 2px solid rgba(15, 74, 199, 0.6);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 16px;
+            text-align: center;
+            box-shadow: 
+                0 0 25px rgba(15, 74, 199, 0.8),
+                0 6px 20px rgba(15, 74, 199, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            animation: headerPulse 2s ease-in-out infinite;
+            white-space: nowrap;
+            z-index: 100;
+            overflow: hidden;
+            text-shadow: 0 0 15px rgba(15, 74, 199, 0.8);
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .popup-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(15, 74, 199, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 74, 199, 0.15) 1px, transparent 1px);
+            background-size: 8px 8px;
+            border-radius: 15px;
+            animation: headerGridShimmer 3s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .benefits-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .benefits-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideInBenefit 0.6s ease forwards, benefitFloat 8s ease-in-out infinite;
+            z-index: 10;
+            position: relative;
+            background: rgba(15, 74, 199, 0.15);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(15, 74, 199, 0.4);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            box-shadow: 
+                0 0 15px rgba(15, 74, 199, 0.3),
+                0 0 25px rgba(15, 74, 199, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .benefit-item:nth-child(1) { 
+            animation-delay: 0.2s, 0s;
+        }
+        .benefit-item:nth-child(2) { 
+            animation-delay: 0.4s, 2s;
+        }
+        .benefit-item:nth-child(3) { 
+            animation-delay: 0.6s, 4s;
+        }
+        .benefit-item:nth-child(4) { 
+            animation-delay: 0.8s, 6s;
+        }
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            bottom: -50px;
+            background: 
+                radial-gradient(circle 2px at 15% 10%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 15% 25%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 15% 40%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 15% 55%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 15% 70%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 15% 85%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 40% 5%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 40% 25%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 40% 45%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 40% 65%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 40% 85%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 65% 15%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 65% 35%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                radial-gradient(circle 2px at 65% 55%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 65% 75%, rgba(15, 74, 199, 0.9) 0%, transparent 50%),
+                
+                radial-gradient(circle 2px at 85% 10%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 85% 30%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 85% 50%, rgba(15, 74, 199, 1) 0%, transparent 50%),
+                radial-gradient(circle 2px at 85% 70%, rgba(15, 74, 199, 0.8) 0%, transparent 50%),
+                radial-gradient(circle 2px at 85% 90%, rgba(15, 74, 199, 1) 0%, transparent 50%);
             border-radius: 12px;
             animation: benefitParticleFlow 4s linear infinite;
             pointer-events: none;
@@ -13,8 +667,8 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
             right: 0;
             bottom: 0;
             background-image: 
-                linear-gradient(rgba(28, 85, 255, 0.2) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(28, 85, 255, 0.2) 1px, transparent 1px);
+                linear-gradient(rgba(15, 74, 199, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 74, 199, 0.2) 1px, transparent 1px);
             background-size: 8px 8px;
             border-radius: 12px;
             opacity: 0;
@@ -25,13 +679,13 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
         }
 
         .benefit-item:hover {
-            background: rgba(28, 85, 255, 0.25);
-            border-color: rgba(28, 85, 255, 0.6);
+            background: rgba(15, 74, 199, 0.25);
+            border-color: rgba(15, 74, 199, 0.6);
             transform: translateX(5px) translateY(-2px);
             box-shadow: 
-                0 0 25px rgba(28, 85, 255, 0.5),
-                0 0 40px rgba(28, 85, 255, 0.3),
-                0 5px 20px rgba(28, 85, 255, 0.2),
+                0 0 25px rgba(15, 74, 199, 0.5),
+                0 0 40px rgba(15, 74, 199, 0.3),
+                0 5px 20px rgba(15, 74, 199, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
@@ -43,8 +697,8 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
             flex-shrink: 0;
             width: 24px;
             height: 24px;
-            background: rgba(28, 85, 255, 0.2);
-            border: 2px solid rgba(28, 85, 255, 0.6);
+            background: rgba(15, 74, 199, 0.2);
+            border: 2px solid rgba(15, 74, 199, 0.6);
             border-radius: 6px;
             display: flex;
             align-items: center;
@@ -52,8 +706,8 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
             margin-right: 12px;
             margin-top: 2px;
             box-shadow: 
-                0 0 15px rgba(28, 85, 255, 0.6),
-                inset 0 0 10px rgba(28, 85, 255, 0.3);
+                0 0 15px rgba(15, 74, 199, 0.6),
+                inset 0 0 10px rgba(15, 74, 199, 0.3);
             animation: checkGlow 2s ease-in-out infinite;
             position: relative;
             overflow: hidden;
@@ -67,7 +721,7 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(28, 85, 255, 0.8), transparent);
+            background: linear-gradient(90deg, transparent, rgba(15, 74, 199, 0.8), transparent);
             animation: checkShimmer 3s ease-in-out infinite;
         }
 
@@ -95,21 +749,21 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
         }
 
         .benefits-close-button {
-            background: rgba(28, 85, 255, 0.3);
+            background: rgba(15, 74, 199, 0.3);
             color: white;
-            border: 2px solid rgba(28, 85, 255, 0.6);
+            border: 2px solid rgba(15, 74, 199, 0.6);
             padding: 12px 24px;
             border-radius: 15px;
             font-weight: 800;
             font-size: 14px;
             cursor: pointer;
             box-shadow: 
-                0 0 25px rgba(28, 85, 255, 0.6),
-                0 6px 20px rgba(28, 85, 255, 0.4),
+                0 0 25px rgba(15, 74, 199, 0.6),
+                0 6px 20px rgba(15, 74, 199, 0.4),
                 inset 0 0 15px rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
             animation: closeButtonGlow 3s ease-in-out infinite;
-            text-shadow: 0 0 12px rgba(28, 85, 255, 0.8);
+            text-shadow: 0 0 12px rgba(15, 74, 199, 0.8);
             z-index: 100;
             position: relative;
             overflow: hidden;
@@ -126,19 +780,19 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(28, 85, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(15, 74, 199, 0.3), transparent);
             transition: left 0.6s ease;
         }
 
         .benefits-close-button:hover {
             transform: scale(1.05);
-            background: rgba(28, 85, 255, 0.4);
+            background: rgba(15, 74, 199, 0.4);
             box-shadow: 
-                0 0 30px rgba(28, 85, 255, 0.8),
-                0 6px 20px rgba(28, 85, 255, 0.6),
+                0 0 30px rgba(15, 74, 199, 0.8),
+                0 6px 20px rgba(15, 74, 199, 0.6),
                 inset 0 0 15px rgba(255, 255, 255, 0.2);
             color: #ffffff;
-            text-shadow: 0 0 15px rgba(28, 85, 255, 1);
+            text-shadow: 0 0 15px rgba(15, 74, 199, 1);
         }
 
         .benefits-close-button:hover::before {
@@ -214,6 +868,30 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
             }
         }
 
+        @keyframes regionCardGlow {
+            0%, 100% {
+                box-shadow: 
+                    0 0 30px rgba(15, 74, 199, 0.6),
+                    0 0 60px rgba(15, 74, 199, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+            50% {
+                box-shadow: 
+                    0 0 40px rgba(15, 74, 199, 0.8),
+                    0 0 80px rgba(15, 74, 199, 0.6),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        @keyframes regionBorderGlow {
+            0%, 100% {
+                background: linear-gradient(45deg, rgba(15, 74, 199, 0.8), rgba(15, 74, 199, 0.4), rgba(15, 74, 199, 0.8), rgba(15, 74, 199, 0.4));
+            }
+            50% {
+                background: linear-gradient(45deg, rgba(15, 74, 199, 1), rgba(15, 74, 199, 0.6), rgba(15, 74, 199, 1), rgba(15, 74, 199, 0.6));
+            }
+        }
+
         @keyframes regionFadeIn {
             to {
                 opacity: 1;
@@ -242,14 +920,14 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
         @keyframes popupGlow {
             0%, 100% {
                 box-shadow: 
-                    0 0 30px rgba(28, 85, 255, 0.6),
-                    0 0 60px rgba(28, 85, 255, 0.4),
+                    0 0 30px rgba(15, 74, 199, 0.6),
+                    0 0 60px rgba(15, 74, 199, 0.4),
                     inset 0 1px 0 rgba(255, 255, 255, 0.1);
             }
             50% {
                 box-shadow: 
-                    0 0 40px rgba(28, 85, 255, 0.8),
-                    0 0 80px rgba(28, 85, 255, 0.6),
+                    0 0 40px rgba(15, 74, 199, 0.8),
+                    0 0 80px rgba(15, 74, 199, 0.6),
                     inset 0 1px 0 rgba(255, 255, 255, 0.2);
             }
         }
@@ -258,14 +936,14 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
             0%, 100% {
                 transform: scale(1);
                 box-shadow: 
-                    0 0 20px rgba(28, 85, 255, 0.8),
-                    0 4px 15px rgba(28, 85, 255, 0.4);
+                    0 0 20px rgba(15, 74, 199, 0.8),
+                    0 4px 15px rgba(15, 74, 199, 0.4);
             }
             50% {
                 transform: scale(1.05);
                 box-shadow: 
-                    0 0 30px rgba(28, 85, 255, 1),
-                    0 6px 20px rgba(28, 85, 255, 0.6);
+                    0 0 30px rgba(15, 74, 199, 1),
+                    0 6px 20px rgba(15, 74, 199, 0.6);
             }
         }
 
@@ -309,15 +987,15 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
         @keyframes checkGlow {
             0%, 100% {
                 box-shadow: 
-                    0 0 15px rgba(28, 85, 255, 0.6),
-                    inset 0 0 10px rgba(28, 85, 255, 0.3);
-                border-color: rgba(28, 85, 255, 0.6);
+                    0 0 15px rgba(15, 74, 199, 0.6),
+                    inset 0 0 10px rgba(15, 74, 199, 0.3);
+                border-color: rgba(15, 74, 199, 0.6);
             }
             50% {
                 box-shadow: 
-                    0 0 25px rgba(28, 85, 255, 0.8),
-                    inset 0 0 15px rgba(28, 85, 255, 0.5);
-                border-color: rgba(28, 85, 255, 0.8);
+                    0 0 25px rgba(15, 74, 199, 0.8),
+                    inset 0 0 15px rgba(15, 74, 199, 0.5);
+                border-color: rgba(15, 74, 199, 0.8);
             }
         }
 
@@ -364,14 +1042,14 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
         @keyframes closeButtonGlow {
             0%, 100% {
                 box-shadow: 
-                    0 0 20px rgba(28, 85, 255, 0.6),
-                    0 4px 15px rgba(28, 85, 255, 0.4),
+                    0 0 20px rgba(15, 74, 199, 0.6),
+                    0 4px 15px rgba(15, 74, 199, 0.4),
                     inset 0 0 10px rgba(255, 255, 255, 0.1);
             }
             50% {
                 box-shadow: 
-                    0 0 25px rgba(28, 85, 255, 0.8),
-                    0 6px 20px rgba(28, 85, 255, 0.6),
+                    0 0 25px rgba(15, 74, 199, 0.8),
+                    0 6px 20px rgba(15, 74, 199, 0.6),
                     inset 0 0 15px rgba(255, 255, 255, 0.2);
             }
         }
@@ -524,7 +1202,6 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
                 align-items: center;
                 text-align: left;
                 gap: 15px;
-                background: rgba(0, 0, 0, 0.9);
             }
 
             .region-option:hover {
@@ -532,7 +1209,7 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
             }
 
             .region-image {
-                width: 70px;
+                width: 60px;
                 height: 60px;
                 margin: 0;
                 flex-shrink: 0;
@@ -924,6 +1601,20 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
                     <div class="check-icon">
                         <div class="check">✓</div>
                     </div>
+                    <div class="benefit-text">Direct support from the TikTok team, including unban support</div>
+                </li>
+                
+                <li class="benefit-item">
+                    <div class="check-icon">
+                        <div class="check">✓</div>
+                    </div>
+                    <div class="benefit-text">Access to TikTok hosted LIVE tournaments and organic marketing opportunities</div>
+                </li>
+                
+                <li class="benefit-item">
+                    <div class="check-icon">
+                        <div class="check">✓</div>
+                    </div>
                     <div class="benefit-text">Access to a network of agency creators who support one another</div>
                 </li>
                 
@@ -985,7 +1676,7 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
                     ripple.style.left = '0';
                     ripple.style.right = '0';
                     ripple.style.bottom = '0';
-                    ripple.style.background = 'rgba(28, 85, 255, 0.3)';
+                    ripple.style.background = 'rgba(15, 74, 199, 0.3)';
                     ripple.style.borderRadius = '12px';
                     ripple.style.transform = 'scale(0)';
                     ripple.style.animation = 'analysisRipple 0.8s ease-out';
@@ -1139,667 +1830,3 @@ radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%)
     </script>
 </body>
 </html>
-    </script>
-</body>
-</html>">
-                    <div class="check-icon">
-                        <div class="check">✓</div>
-                    </div>
-                    <div class="benefit-text">Direct support from the TikTok team, including unban support</div>
-                </li>
-                
-                <li class="benefit-item">
-                    <div class="check-icon">
-                        <div class="check">✓</div>
-                    </div>
-                    <div class="benefit-text">Access to TikTok hosted LIVE tournaments and organic marketing opportunities</div>
-                </li>
-                
-                <li class="benefit-item<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webflow Fixed Centered Buttons</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #000000;
-            font-family: 'Montserrat', Arial, sans-serif;
-            padding: 2rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-        }
-
-        /* CRITICAL: Force block-level behavior and clear floats */
-        .buttons-wrapper {
-            width: 100%;
-            max-width: 1200px;
-            margin: 2rem auto 0 auto;
-            padding: 2rem 0;
-            display: block !important;
-            clear: both !important;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Alternative: Use CSS Grid for better control */
-        .buttons-container {
-            display: grid !important;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 2rem;
-            justify-items: center;
-            align-items: center;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .button-container {
-            position: relative;
-            display: inline-block;
-            animation: buttonFloat 6s ease-in-out infinite;
-            flex: 0 0 auto;
-            float: none !important;
-            clear: none !important;
-        }
-
-        .button-container:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .button-container:nth-child(2) {
-            animation-delay: 2s;
-        }
-
-        .button-container:nth-child(3) {
-            animation-delay: 4s;
-        }
-
-        .glow-button {
-            position: relative;
-            padding: 16px 32px;
-            background: rgba(28, 85, 255, 0.3);
-            border: 1px solid rgba(28, 85, 255, 0.6);
-            border-radius: 12px;
-            color: white;
-            font-size: 16px;
-            font-weight: 800;
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.6s ease;
-            box-shadow: 
-                0 0 20px rgba(28, 85, 255, 0.4),
-                0 0 40px rgba(28, 85, 255, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-            z-index: 2;
-            text-decoration: none;
-            display: inline-block;
-            white-space: nowrap;
-            min-width: 180px;
-            text-align: center;
-            float: none !important;
-            position: relative !important;
-        }
-
-        .button-text {
-            position: relative;
-            z-index: 10;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .glow-button::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            left: 0;
-            right: 0;
-            bottom: -100px;
-            background: 
-                radial-gradient(circle 2px at 10% 0%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 15%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 30%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 45%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 60%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 75%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 10% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 30% 0%, rgba(28, 85, 255, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 20%, rgba(28, 85, 255, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 40%, rgba(28, 85, 255, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 60%, rgba(28, 85, 255, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 30% 80%, rgba(28, 85, 255, 0.9) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 50% 5%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 25%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 45%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 65%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 50% 85%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 70% 10%, rgba(28, 85, 255, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 30%, rgba(28, 85, 255, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 50%, rgba(28, 85, 255, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 70%, rgba(28, 85, 255, 0.7) 0%, transparent 50%),
-                radial-gradient(circle 2px at 70% 90%, rgba(28, 85, 255, 0.9) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 90% 0%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 90% 25%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 90% 50%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 90% 75%, rgba(28, 85, 255, 1) 0%, transparent 50%);
-            border-radius: 12px;
-            animation: particleFlow 3s linear infinite;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0;
-            background-image: 
-                linear-gradient(rgba(28, 85, 255, 0.4) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(28, 85, 255, 0.4) 1px, transparent 1px);
-            background-size: 8px 8px;
-            border-radius: 12px;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .grid-pulse {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0;
-            background: 
-                radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
-                rgba(28, 85, 255, 0.8) 0%, 
-                rgba(28, 85, 255, 0.4) 20%, 
-                rgba(28, 85, 255, 0.2) 40%,
-                transparent 60%);
-            border-radius: 12px;
-            pointer-events: none;
-            z-index: 0;
-            transition: all 0.2s ease;
-        }
-
-        .glow-button:hover {
-            transform: translateY(-2px) scale(1.01);
-            background: rgba(28, 85, 255, 0.4);
-            border-color: rgba(28, 85, 255, 0.8);
-            box-shadow: 
-                0 0 30px rgba(28, 85, 255, 0.6),
-                0 0 60px rgba(28, 85, 255, 0.4),
-                0 10px 30px rgba(28, 85, 255, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        .glow-button:hover .grid-overlay {
-            opacity: 1;
-            animation: gridScan 2.5s ease-in-out infinite;
-        }
-
-        .glow-button:hover .grid-pulse {
-            opacity: 1;
-            animation: pulseWave 1.5s ease-out infinite;
-        }
-
-        .glow-button:active {
-            transform: translateY(-1px) scale(1.005);
-        }
-
-        /* REGION SELECTOR STYLES - Matching existing theme */
-        .region-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            padding: 1rem;
-        }
-
-        .region-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .region-card {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(28, 85, 255, 0.6);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 
-                0 0 30px rgba(28, 85, 255, 0.6),
-                0 0 60px rgba(28, 85, 255, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transform: scale(0.7) translateY(50px);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            max-height: 80vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .region-overlay.active .region-card {
-            transform: scale(1) translateY(0);
-        }
-
-        .region-card-header {
-            background: rgba(28, 85, 255, 0.3);
-            border: 2px solid rgba(28, 85, 255, 0.6);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 15px;
-            font-weight: 800;
-            font-size: 18px;
-            text-align: center;
-            box-shadow: 
-                0 0 25px rgba(28, 85, 255, 0.8),
-                0 6px 20px rgba(28, 85, 255, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            text-shadow: 0 0 15px rgba(28, 85, 255, 0.8);
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .region-card-subtitle {
-            color: white;
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 14px;
-            font-weight: 800;
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.8),
-                0 0 20px rgba(255, 255, 255, 0.6),
-                0 0 30px rgba(255, 255, 255, 0.4);
-        }
-
-        .regions-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            flex: 1;
-            overflow-y: auto;
-        }
-
-        .region-option {
-            position: relative;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 1.5rem;
-            border-radius: 15px;
-            background: rgba(0, 0, 0, 0.85);
-            border: 1px solid rgba(28, 85, 255, 0.4);
-            animation: regionFadeIn 0.6s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
-            overflow: hidden;
-            box-shadow: 
-                0 0 15px rgba(28, 85, 255, 0.3),
-                0 0 25px rgba(28, 85, 255, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .region-option:nth-child(1) { animation-delay: 0.1s; }
-        .region-option:nth-child(2) { animation-delay: 0.2s; }
-        .region-option:nth-child(3) { animation-delay: 0.3s; }
-        .region-option:nth-child(4) { animation-delay: 0.4s; }
-
-        .region-option::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: 0;
-            right: 0;
-            bottom: -50px;
-            background: 
-                radial-gradient(circle 2px at 15% 10%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 35% 25%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 55% 40%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 75% 55%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 25% 70%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 65% 85%, rgba(28, 85, 255, 0.8) 0%, transparent 50%);
-            border-radius: 15px;
-            animation: regionParticleFlow 4s linear infinite;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .region-option:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 
-                0 15px 30px rgba(28, 85, 255, 0.5),
-                0 0 40px rgba(28, 85, 255, 0.4);
-            border-color: rgba(28, 85, 255, 0.8);
-            background: rgba(28, 85, 255, 0.25);
-        }
-
-        .region-image {
-            width: 100px;
-            height: 80px;
-            margin: 0 auto 15px;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            animation: imageFloat 4s ease-in-out infinite;
-            position: relative;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .region-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .region-option:hover .region-image {
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(28, 85, 255, 0.4);
-        }
-
-        .region-option:hover .region-image img {
-            transform: scale(1.1);
-        }
-
-        .select-button {
-            position: relative;
-            padding: 12px 24px;
-            background: rgba(28, 85, 255, 0.3);
-            border: 1px solid rgba(28, 85, 255, 0.6);
-            border-radius: 12px;
-            color: white;
-            font-size: 14px;
-            font-weight: 800;
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 0 20px rgba(28, 85, 255, 0.4),
-                0 0 40px rgba(28, 85, 255, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            z-index: 10;
-        }
-
-        .select-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .select-button:hover::before {
-            left: 100%;
-        }
-
-        .select-button:hover {
-            transform: translateY(-2px);
-            background: rgba(28, 85, 255, 0.4);
-            border-color: rgba(28, 85, 255, 0.8);
-            box-shadow: 
-                0 0 30px rgba(28, 85, 255, 0.6),
-                0 0 60px rgba(28, 85, 255, 0.4);
-        }
-
-        .close-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(28, 85, 255, 0.3);
-            border: 1px solid rgba(28, 85, 255, 0.6);
-            color: white;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 18px;
-            box-shadow: 
-                0 0 15px rgba(28, 85, 255, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            z-index: 15;
-        }
-
-        .close-button:hover {
-            background: rgba(28, 85, 255, 0.5);
-            transform: rotate(90deg);
-            box-shadow: 
-                0 0 25px rgba(28, 85, 255, 0.6),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        }
-
-        /* Desktop Popup Styles */
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            padding: 1rem;
-        }
-
-        .popup-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .popup-container {
-            position: relative;
-            width: 400px;
-            max-width: 90vw;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(28, 85, 255, 0.6);
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 
-                0 0 30px rgba(28, 85, 255, 0.6),
-                0 0 60px rgba(28, 85, 255, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transform: scale(0.7) translateY(50px);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: popupGlow 3s ease-in-out infinite;
-            max-height: 70vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .popup-overlay.active .popup-container {
-            transform: scale(1) translateY(0);
-        }
-
-        .grid-vignette {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(28, 85, 255, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(28, 85, 255, 0.08) 1px, transparent 1px),
-                radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.4) 100%);
-            background-size: 20px 20px, 20px 20px, 100% 100%;
-            border-radius: 20px;
-            animation: gridPulse 6s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .popup-header {
-            background: rgba(28, 85, 255, 0.3);
-            border: 2px solid rgba(28, 85, 255, 0.6);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 15px;
-            font-weight: 800;
-            font-size: 16px;
-            text-align: center;
-            box-shadow: 
-                0 0 25px rgba(28, 85, 255, 0.8),
-                0 6px 20px rgba(28, 85, 255, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            animation: headerPulse 2s ease-in-out infinite;
-            white-space: nowrap;
-            z-index: 100;
-            overflow: hidden;
-            text-shadow: 0 0 15px rgba(28, 85, 255, 0.8);
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .popup-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(28, 85, 255, 0.15) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(28, 85, 255, 0.15) 1px, transparent 1px);
-            background-size: 8px 8px;
-            border-radius: 15px;
-            animation: headerGridShimmer 3s ease-in-out infinite;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .benefits-list {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            position: relative;
-            z-index: 10;
-            flex: 1;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .benefits-list::-webkit-scrollbar {
-            display: none;
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateX(-30px);
-            animation: slideInBenefit 0.6s ease forwards, benefitFloat 8s ease-in-out infinite;
-            z-index: 10;
-            position: relative;
-            background: rgba(28, 85, 255, 0.15);
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(28, 85, 255, 0.4);
-            transition: all 0.3s ease;
-            overflow: hidden;
-            box-shadow: 
-                0 0 15px rgba(28, 85, 255, 0.3),
-                0 0 25px rgba(28, 85, 255, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .benefit-item:nth-child(1) { 
-            animation-delay: 0.2s, 0s;
-        }
-        .benefit-item:nth-child(2) { 
-            animation-delay: 0.4s, 2s;
-        }
-        .benefit-item:nth-child(3) { 
-            animation-delay: 0.6s, 4s;
-        }
-        .benefit-item:nth-child(4) { 
-            animation-delay: 0.8s, 6s;
-        }
-
-        .benefit-item::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: 0;
-            right: 0;
-            bottom: -50px;
-            background: 
-                radial-gradient(circle 2px at 15% 10%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 15% 25%, rgba(28, 85, 255, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 15% 40%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 15% 55%, rgba(28, 85, 255, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 15% 70%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 15% 85%, rgba(28, 85, 255, 0.9) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 40% 5%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 40% 25%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 40% 45%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 40% 65%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 40% 85%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 65% 15%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 65% 35%, rgba(28, 85, 255, 0.9) 0%, transparent 50%),
-                radial-gradient(circle 2px at 65% 55%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 65% 75%, rgba(28, 85, 255, 0.9) 0%, transparent 50%),
-                
-                radial-gradient(circle 2px at 85% 10%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 85% 30%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 85% 50%, rgba(28, 85, 255, 1) 0%, transparent 50%),
-                radial-gradient(circle 2px at 85% 70%, rgba(28, 85, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle 2px at 85% 90%, rgba(28, 85, 255, 1) 0%, transparent 50%
