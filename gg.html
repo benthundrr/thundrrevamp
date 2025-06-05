@@ -537,19 +537,19 @@
             position: relative;
             width: 400px;
             max-width: 90vw;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(15, 74, 199, 0.2);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(15, 74, 199, 0.6);
             border-radius: 20px;
             padding: 1.5rem;
             box-shadow: 
+                0 0 40px rgba(15, 74, 199, 0.6),
+                0 0 80px rgba(15, 74, 199, 0.4),
                 0 8px 32px rgba(0, 0, 0, 0.3),
-                0 0 60px rgba(15, 74, 199, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
             transform: scale(0.7) translateY(50px);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            max-height: 70vh;
-            overflow: hidden;
+            animation: popupGlow 3s ease-in-out infinite;
             display: flex;
             flex-direction: column;
         }
@@ -589,14 +589,6 @@
             position: relative;
             z-index: 10;
             flex: 1;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .benefits-list::-webkit-scrollbar {
-            display: none;
         }
 
         .benefit-item {
@@ -608,15 +600,17 @@
             animation: slideInBenefit 0.6s ease forwards;
             z-index: 10;
             position: relative;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(15, 74, 199, 0.3);
             padding: 12px;
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(15, 74, 199, 0.6);
             transition: all 0.3s ease;
             overflow: hidden;
             backdrop-filter: blur(10px);
             box-shadow: 
-                0 4px 15px rgba(0, 0, 0, 0.1),
+                0 0 20px rgba(15, 74, 199, 0.5),
+                0 0 40px rgba(15, 74, 199, 0.3),
+                0 0 60px rgba(15, 74, 199, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
@@ -634,12 +628,14 @@
         }
 
         .benefit-item:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(15, 74, 199, 0.4);
+            background: rgba(15, 74, 199, 0.4);
+            border-color: rgba(15, 74, 199, 0.8);
             transform: translateX(5px) translateY(-2px);
             box-shadow: 
-                0 8px 25px rgba(0, 0, 0, 0.2),
-                0 0 30px rgba(15, 74, 199, 0.3),
+                0 0 30px rgba(15, 74, 199, 0.7),
+                0 0 60px rgba(15, 74, 199, 0.5),
+                0 0 100px rgba(15, 74, 199, 0.3),
+                0 5px 20px rgba(15, 74, 199, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
@@ -1063,7 +1059,6 @@
             }
 
             .popup-container {
-                max-height: 75vh;
                 padding: 1.2rem;
                 border-radius: 20px;
                 margin: 0;
@@ -1112,10 +1107,6 @@
                 margin-top: 1rem;
                 -webkit-tap-highlight-color: transparent;
                 touch-action: manipulation;
-            }
-
-            .benefits-list {
-                max-height: calc(75vh - 160px);
             }
         }
 
@@ -1170,9 +1161,7 @@
             }
 
             .popup-container {
-                max-height: 80vh;
                 padding: 1rem;
-                max-width: 320px;
             }
 
             .popup-header {
@@ -1208,10 +1197,6 @@
                 font-size: 13px;
                 margin-top: 0.8rem;
                 border-radius: 10px;
-            }
-
-            .benefits-list {
-                max-height: calc(80vh - 140px);
             }
         }
 
@@ -1249,13 +1234,7 @@
                 font-size: 11px;
             }
 
-            .popup-overlay {
-                align-items: center;
-                padding: 1rem;
-            }
-
             .popup-container {
-                max-height: 85vh;
                 padding: 1rem;
                 border-radius: 16px;
                 transform: scale(0.7) translateY(50px);
@@ -1285,10 +1264,6 @@
                 padding: 10px 18px;
                 font-size: 12px;
                 margin-top: 0.6rem;
-            }
-
-            .benefits-list {
-                max-height: calc(85vh - 120px);
             }
         }
 
